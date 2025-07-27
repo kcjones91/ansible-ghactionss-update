@@ -1,10 +1,14 @@
 ---
+dependency:
+  name: galaxy
+  enabled: false
+
 driver:
   name: docker
 
 platforms:
   - name: instance
-    image: "quay.io/fedora/fedora:${MOLECULE_DISTRO:-39}"
+    image: "fedora:${MOLECULE_DISTRO:-42}"
     pre_build_image: true
     privileged: true
     command: "/usr/sbin/init"

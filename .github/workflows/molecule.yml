@@ -13,13 +13,14 @@ jobs:
       fail-fast: false
       matrix:
         distro: 
-          - fedora38
-          - fedora39
+          - "41"
+          - "42"
+          - "latest"
     
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      
+
       - name: Run Molecule Tests
         uses: gofrolist/molecule-action@v2
         with:
