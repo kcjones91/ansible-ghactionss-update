@@ -13,8 +13,8 @@ jobs:
       fail-fast: false
       matrix:
         distro: 
-          - "41"
-          - "42"
+          - "39"
+          - "40"
     
     steps:
       - name: Checkout
