@@ -1,0 +1,20 @@
+---
+- name: Update DNF cache
+  ansible.builtin.dnf:
+    update_cache: true
+  become: true
+
+- name: Update all packages
+  ansible.builtin.dnf:
+    name: "*"
+    state: latest
+  become: true
+
+- name: Clean up unused packages
+  ansible.builtin.dnf:
+    autoremove: true
+  become: true
+
+- name: Display update completion message
+  ansible.builtin.debug:
+    msg: "System packages have been updated successfully"

@@ -1,0 +1,29 @@
+---
+- name: Verify
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Verify DNF is working
+      ansible.builtin.command: dnf --version
+      register: dnf_version
+      changed_when: false
+
+    - name: Display DNF version
+      ansible.builtin.debug:
+        var: dnf_version.stdout
+
+    - name: Check if any updates are available
+      ansible.builtin.dnf:
+        list: updates
+      register: available_updates
+
+    - name: Show number of available updates
+      ansible.builtin.debug:
+        msg: "Available updates: {{ available_updates.results | length }}"
+
+    - name: Verify system is up to date
+      ansible.builtin.assert:
+        that:
+          - dnf_version.rc == 0
+        success_msg: "DNF is working correctly"
+        fail_msg: "DNF command failed"
