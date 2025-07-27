@@ -15,7 +15,6 @@ jobs:
         distro: 
           - "41"
           - "42"
-          - "latest"
     
     steps:
       - name: Checkout
