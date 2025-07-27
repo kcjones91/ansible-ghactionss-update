@@ -1,7 +1,7 @@
 ---
 dependency:
   name: galaxy
-  enabled: false
+  enabled: true
 
 driver:
   name: docker
@@ -10,11 +10,7 @@ platforms:
   - name: instance
     image: "fedora:${MOLECULE_DISTRO:-42}"
     pre_build_image: true
-    privileged: true
-    command: "/usr/sbin/init"
-    tmpfs:
-      - /run
-      - /tmp
+    command: "sleep infinity"
 
 provisioner:
   name: ansible
